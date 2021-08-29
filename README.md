@@ -1,18 +1,16 @@
-Hello, My Friends  
-Thank you for having interest in this repository ! 
+### ✔️ 프로젝트 기간
 
-To use this application, 
+21.08.27 ~ (진행중)
 
-1. make dev.js file inside config folder 
-2. put mongoDB info into dev.js file 
-3. Type  " npm install " inside the root directory  ( Download Server Dependencies ) 
-4. Type " npm install " inside the client directory ( Download Front-end Dependencies )
+### ✔️ 프로젝트 소개
 
+현재는 John Ann Boilerplate를 이용하여 쇼핑몰의 가장 기본적인 기능을 구현 중입니다.
 
-If you have problem, feel free to ask me ^^ 
+토대 공사가 끝나면 발랄하고 유쾌한 쇼핑몰로 만드는 작업을 진행할 거에요!
 
-You can watch the tutorial for this app.
+### ✔️ 기술스택
 
-https://www.youtube.com/channel/UCFyXA9x8lpL3EYWeYhj4C4Q?view_as=subscriber
-
-
+1. React
+2. Node.js
+3. Mongo DB
+4. Styled Components
