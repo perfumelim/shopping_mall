@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { Icon } from "antd";
 import axios from "axios";
 
-function FileUpload() {
+function FileUpload(props) {
   const [Images, setImages] = useState([]);
   const dropHandler = (files) => {
     let formData = new FormData();
@@ -15,6 +15,7 @@ function FileUpload() {
     axios.post("/api/product/image", formData, config).then((response) => {
       if (response.data.success) {
         setImages([...Images, response.data.filePath]);
+        props.refreshFunction([...Images, response.data.filePath]);
       } else {
         alert("파일을 저장하는데 실패했습니다");
       }
@@ -26,6 +27,7 @@ function FileUpload() {
     newImages.splice(currentIndex, 1);
 
     setImages(newImages);
+    props.refreshFunction(newImages);
   };
   return (
     <DropzoneContainer>
