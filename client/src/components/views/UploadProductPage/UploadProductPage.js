@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { Button, Form, Input } from "antd";
+import { Typography, Button, Form, Input } from "antd";
 import FileUpload from "../../utils/FileUpload";
 import Axios from "axios";
-
 const { TextArea } = Input;
 
 const Continents = [
@@ -45,28 +44,28 @@ function UploadProductPage(props) {
   const submitHandler = (event) => {
     event.preventDefault();
 
-    if (!Title || !Description || !Price || !Continent || !Images) {
-      return alert("모든 값을 넣어주셔야 합니다.");
+    if (!Title || !Description || !Price || !Continent || Images.length === 0) {
+      return alert(" 모든 값을 넣어주셔야 합니다.");
     }
-  };
 
-  const body = {
-    writer: props.user.userData._id,
-    title: Title,
-    description: Description,
-    price: Price,
-    images: Images,
-    continents: Continent,
-  };
+    const body = {
+      writer: props.user.userData._id,
+      title: Title,
+      description: Description,
+      price: Price,
+      images: Images,
+      continents: Continent,
+    };
 
-  Axios.post("/api/product", body).then((response) => {
-    if (response.data.success) {
-      alert("상품 업로드에 성공했습니다!");
-      props.history.push("/");
-    } else {
-      alert("상품 업로드에 실패했습니다.");
-    }
-  });
+    Axios.post("/api/product", body).then((response) => {
+      if (response.data.success) {
+        alert("상품 업로드에 성공 했습니다.");
+        props.history.push("/");
+      } else {
+        alert("상품 업로드에 실패 했습니다.");
+      }
+    });
+  };
 
   return (
     <div style={{ maxWidth: "700px", margin: "2rem auto" }}>

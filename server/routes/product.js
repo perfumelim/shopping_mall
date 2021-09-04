@@ -18,7 +18,6 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage }).single("file");
 
 router.post("/image", (req, res) => {
-  //가져온 이미지를 저장해주면 된다
   upload(req, res, (err) => {
     if (err) {
       return req.json({ success: false, err });
@@ -33,10 +32,20 @@ router.post("/image", (req, res) => {
 
 router.post("/", (req, res) => {
   const product = new Product(req.body);
+
   product.save((err) => {
     if (err) return res.status(400).json({ success: false, err });
     return res.status(200).json({ success: true });
   });
+});
+
+router.post("/products", (req, res) => {
+  Product.find()
+    .populate("writer")
+    .exec((err, productInfo) => {
+      if (err) return res.status(400).json({ success: false, err });
+      return res.status(200).json({ success: true, productInfo });
+    });
 });
 
 module.exports = router;
