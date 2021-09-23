@@ -31,7 +31,7 @@ function CheckBox(props) {
                 {renderCheckboxLists()}
             
             </Panel>
-        </Collapse>,
+        </Collapse>
         </div>
     )
 }

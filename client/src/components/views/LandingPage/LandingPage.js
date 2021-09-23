@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Icon, Col, Card, Row } from "antd";
+import { Icon, Col, Card, Row, Collapse } from "antd";
 import Meta from "antd/lib/card/Meta";
 import ImageSlider from "../../utils/ImageSlider";
 import CheckBox from "./Sections/CheckBox";
 import {continents, price} from "./Sections/Datas";
+import RadioBox from "./Sections/RadioBox";
 
 function LandingPage() {
   const [Products, setProducts] = useState([]);
@@ -76,7 +77,7 @@ function LandingPage() {
     setSkip(0)
   }
 
-  const handleFilters = (filter, category) => {
+  const handleFilters = (filters, category) => {
     const newFilters = {...Filters}
     newFilters[category] = filters
     showFilteredResults(newFilters)
@@ -91,9 +92,16 @@ function LandingPage() {
         </h2>
       </div>
       {/*Fiter*/}
-      {/*CheckBox*/}
+      <Row gutter={[16,16]}>
+        <Col lg={12} xs={24}>
+         {/*CheckBox*/}
       <CheckBox list={continents} handleFilters={filters=> handleFilters(filters, "continents")}/>
-      {/*RadioBox*/}
+        </Col>
+        <Col lg={12} xs={24}>
+         {/*RadioBox*/}
+         <RadioBox list={price} handleFilters={filters=> handleFilters(filters, "price")}/>
+        </Col>
+        </Row>
       {/*Search*/}
       {/*Cards*/}
       <Row gutter={[16, 16]}>{renderCards}</Row>
