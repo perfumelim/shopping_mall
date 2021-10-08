@@ -8,6 +8,7 @@ import RegisterPage from "./views/RegisterPage/RegisterPage.js";
 import NavBar from "./views/NavBar/NavBar";
 import Footer from "./views/Footer/Footer";
 import UploadProductPage from "./views/UploadProductPage/UploadProductPage";
+import ProductDetailPage from "./views/ProductDetailPage/ProductDetailPage";
 import { FaLevelUpAlt } from "react-icons/fa";
 
 //null   Anyone Can go inside
@@ -27,6 +28,11 @@ function App() {
             exact
             path="/product/upload"
             component={Auth(UploadProductPage, true)}
+          />
+          <Route
+            exact
+            path="/product/:productId"
+            component={Auth(ProductDetailPage, null)}
           />
         </Switch>
       </div>
